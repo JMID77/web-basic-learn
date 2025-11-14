@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first web project (HTML)</title>
+</head>
+<body>
+
+    <header>
+        <h1>My first web project (HTML)</h1>
+        <header>
+        <h1>Bienvenue sur ma page personnelle</h1>
+        <nav>
+            <ul>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section à propos -->
+        <section id="apropos">
+            <h2>À propos de moi</h2>
+            <p>Je suis passionné par le développement web et j’apprends HTML, CSS et JavaScript.</p>
+        </section>
+
+        <!-- Section blog -->
+        <section id="blog">
+            <h2>Derniers articles</h2>
+
+            <article>
+                <h3>Article 1</h3>
+                <p>Contenu de l’article 1...</p>
+            </article>
+
+            <article>
+                <h3>Article 2</h3>
+                <p>Contenu de l’article 2...</p>
+            </article>
+        </section>
+
+         <!-- Galerie d'images -->
+        <section id="galerie">
+            <h2>Ma Galerie</h2>
+            <figure>
+                <img src="/images/firefox.jpg" alt="firefox">
+                <figcaption>Légende de la photo 1</figcaption>
+            </figure>
+            <figure>
+                <img src="/images/google.png" alt="google">
+                <figcaption>Légende de la photo 2</figcaption>
+            </figure>
+        </section>
+
+        <!-- Formulaire de contact -->
+        <section id="contact">
+            <h2>Contactez-moi</h2>
+            <form action="#" method="post" id="myContactForm">
+                <label for="nom">Nom :</label><br>
+                <input type="text" id="name" name="nom"><br><br>
+
+                <label for="email">Email :</label><br>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="message">Message :</label><br>
+                <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+
+                <button type="submit" id="btnShowContact">Envoyer</button>
+            </form>
+        </section>
+
+        <script>
+            const bouton = document.getElementById('btnShowContact');
+
+            bouton.addEventListener('click', () => {
+                const nom = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                // Crée le texte récapitulatif
+                const recap = `Récapitulatif du formulaire :\n\nNom : ${nom}\nEmail : ${email}\nMessage : ${message}`;
+
+                // Affiche la popup
+                alert(recap);
+            });
+        </script>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 JoMi. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
