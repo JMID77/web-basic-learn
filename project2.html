@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>My second page (HTML)</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <header>
+        <h1>Ceci est mon titre...</h1>
+        <nav>
+            <ul>
+                <li> <a href="#apropos">A propos...</a> </li>
+                <li> <a href="#blog">Les articles</a> </li>
+                <li> <a href="#galerie">La galerie de photo</a> </li>
+                <li> <a href="#contact">Nous contacter</a> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="apropos">
+            <h2>A propos de ce site...</h2>
+            <p>Voici ce qui me motive...</p>
+        </section>
+
+        <section id="blog">
+            <h2>La liste des news...</h2>
+            <article>
+                <h3>Article - Moutons</h3>
+                <p>Cette articles parle de mouton</p>  
+            </article>
+            <article>
+                <h3>Article - Loups</h3>
+                <p>Cette articles parle de loup</p>  
+            </article>
+        </section>
+
+        <section id="galerie">
+            <h2>La galerie d'image du site</h2>
+            <figure>
+                <img src="/images/firefox.jpg" alt="firefox">
+                <figcaption>Image de firefox</figcaption>
+            </figure>
+            <figure>
+                <img src="/images/google.png" alt="google">
+                <figcaption>Image de google</figcaption>
+            </figure>
+        </section>
+
+        <section id="contact">
+            <h2>Contactez-nous</h2>
+            <form action="">
+                <label for="name">Nom : </label>
+                <input type="text" name="name" id="name"><br><br>
+
+                <label for="email">Email : </label>
+                <input type="email" name="email" id="email"><br><br>
+
+                <label for="message">Message : </label>
+                <textarea name="message" id="message" rows="4" cols="50"></textarea><br><br>
+
+                <button type="submit" id="btnSend">Envoyer</button>
+            </form>
+        </section>
+        <script>
+            const bouton = document.getElementById('btnSend');
+
+            bouton.addEventListener('click', () => {
+                    const nom = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    const recap =  `Récapitulatif du formulaire: \n\nNom: ${nom}\nEmail: ${email}\nMessage:\n ${message}`;
+                    alert(recap);
+                });  
+        </script>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Mon site. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
