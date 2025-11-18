@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Accueil — Exercice Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <!--
+    Documentation: http://127.0.0.1:5500/exo-menu3/index.html#link
+    -->
+    
+    <div include-html="menu.html"></div>
+
+    <main class="container">
+        <h1>Accueil</h1>
+        <p>Bienvenue sur la page d'accueil. Le menu en haut est responsive et utilisera Flexbox.</p>
+    </main>
+
+
+    <div include-html="bas-page.html"></div>
+    <script>
+        async function includeHTMLAndInit() {
+            const elements = document.querySelectorAll("[include-html]");
+            for (const el of elements) {
+                const file = el.getAttribute("include-html");
+                const html = await fetch(file).then(r => r.text());
+                el.innerHTML = html;
+            }
+
+            // Le contenu inclus est maintenant dans le DOM.
+            // Charger le script du menu (remplace le chemin si nécessaire)
+            const existing = document.querySelector('script[data-menu-script]');
+            if (!existing) {
+                const s = document.createElement('script');
+                s.src = "../scripts/script-exo-menu.js";
+                s.setAttribute('data-menu-script', '1'); // marque pour éviter doublons
+                document.body.appendChild(s);
+            } else {
+                // si tu veux ré-initialiser le menu quand include est rappelé, appelle une fonction d'init ici
+                if (window.initMenu) window.initMenu();
+            }
+        }
+
+        includeHTMLAndInit();
+    </script>
+    
+</body>
+
+</html>

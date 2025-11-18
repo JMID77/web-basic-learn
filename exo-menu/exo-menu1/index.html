@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Responsive Fonctionnel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="index.html" class="logo">MonSite</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">☰ <span class="sr-only">Menu</span></button>
+    <nav id="main-nav" class="nav">
+        <ul class="nav__list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li class="has-submenu">
+                <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Services ▾</button>
+                <ul class="submenu">
+                    <li><a href="services-web.html">Web</a></li>
+                    <li><a href="services-seo.html">SEO</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>Accueil</h1>
+    <p>Menu responsive vertical sur mobile, horizontal sur desktop.</p>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

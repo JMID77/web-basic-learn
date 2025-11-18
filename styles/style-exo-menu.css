@@ -1,0 +1,185 @@
+/* reset minimal */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --gap: 1rem;
+    --nav-height: 64px;
+    --max-width: 1100px
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+    padding: 0;
+    color: #111
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    padding: 0 1rem
+}
+
+
+/* header */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-height);
+    padding: 0 1rem;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.logo {
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit
+}
+
+
+/* nav */
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    list-style: none
+}
+
+.nav__list a,
+.nav__list button {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer
+}
+
+.nav__list a:hover,
+.nav__list button:hover {
+    background: #f3f3f3
+}
+
+
+.has-submenu {
+    position: relative
+}
+
+.submenu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    padding: 0.5rem 0;
+    display: none;
+    min-width: 180px;
+    border-radius: 6px;
+    list-style: none
+}
+
+.submenu li a {
+    display: block;
+    padding: 0.5rem 1rem
+}
+
+.has-submenu:hover .submenu {
+    display: block
+}
+
+/* hover pour desktop */
+
+
+/* nav toggle (mobile) */
+.nav-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem
+}
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden
+}
+
+
+/* Responsive: mobile */
+@media (max-width:768px) {
+    /* le menu est en position absolue → NE DOIT PLUS dépendre du flex du header */
+    .site-header {
+        position: relative;
+    }
+
+    .nav-toggle {
+        display: inline-block
+    }
+
+    .nav {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #e6e6e6;
+        display: none;
+        width: 100%;
+        z-index: 1000;
+
+        /* important : empêcher l’influence du flex du header */
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav.open {
+        display: block;
+    }
+
+    /* les items doivent être en colonne */
+    .nav__list {
+        flex-direction: column;
+        align-items: flex-start;   /* 👈 empêche le centrage */
+        gap: 0;
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .nav__list a,
+    .nav__list button {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* sous-menu caché par défaut */
+    .submenu {
+        display: none;
+        width: 100%;           /* 👈 évite les empilements */
+        padding-left: 1rem;
+        box-shadow: none;
+        border: 0;
+        position: relative;
+    }
+
+    .submenu.open {
+        display: block;        /* 👈 correct */
+    }
+}
+
+
+/* focus styles */
+a:focus,
+button:focus {
+    outline: 2px solid #4d90fe;
+    outline-offset: 2px
+}
